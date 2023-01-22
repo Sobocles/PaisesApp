@@ -1,0 +1,25 @@
+<h2>Por Pais</h2>
+<hr>
+<!--ngmodel es para que el termino aparesca en el buscador osea en el input escrito-->
+<div class="row">
+    <div class="col">
+        <app-pais-input 
+            (onEnter)="buscar( $event )"
+            (onDebounce)="sugerencias( $event )"
+            placeholder="Buscar país...">
+        </app-pais-input>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError" 
+    class="alert alert-danger">
+    No se encontro nada con el termino {{termino}}
+</div>
+
+<div *ngIf="paises.length > 0"  class="row"> <!--Esto solo se mostrara si hay paises en el arreglo de paises de lo contrario no lo hara-->
+    <div class="col">
+        <app-tabla [paises] = "paises"></app-tabla>
+    </div>
+</div>
